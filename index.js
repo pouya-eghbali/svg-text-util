@@ -1,4 +1,5 @@
-const { getWidth } = require('text-pixel-width');
+const { getWidth } = require('text-pixel-width')
+const xmlescape = require('xml-escape')
 
 class SVG {
   constructor(width, height, padding) {
@@ -17,6 +18,7 @@ class SVG {
     color = color || '#000000'
     font = font || 'Arial'
     const x = this[align || 'left'](text, size, font)
+    text = xmlescape(text)
     const tspan = `<tspan dy="${size}" x="${x + this.padding}" font-size="${size}px" fill="${color}" font-family="${font}">${text}</tspan>`
     this.tspans.push(tspan)
     return this
