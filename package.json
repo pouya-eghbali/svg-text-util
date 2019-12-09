@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "string-pixel-width": "^1.10.0"
+    "text-pixel-width": "^1.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.23.4"
   }
 }

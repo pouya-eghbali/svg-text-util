@@ -1,9 +1,10 @@
-const pixelWidth = require('string-pixel-width');
+const { getWidth } = require('text-pixel-width');
 
 class SVG {
-  constructor(width, height) {
+  constructor(width, height, padding) {
     this.width = width
     this.height = height
+    this.padding = padding || 0
     this.tspans = []
   }
   white(size) {
@@ -16,7 +17,7 @@ class SVG {
     color = color || '#000000'
     font = font || 'Arial'
     const x = this[align || 'left'](text, size, font)
-    const tspan = `<tspan dy="${size}" x="${x}" font-size="${size}" fill="${color}" font-family="${font}">${text}</tspan>`
+    const tspan = `<tspan dy="${size}" x="${x + this.padding}" font-size="${size}px" fill="${color}" font-family="${font}">${text}</tspan>`
     this.tspans.push(tspan)
     return this
   }
@@ -48,8 +49,9 @@ class SVG {
     <svg
       xmlns="http://www.w3.org/2000/svg" version="1.1"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      width="${this.width}" height="${this.height}">
-      <text>
+      width="${this.width + this.padding * 2}"
+      height="${this.height + this.padding * 2}">
+      <text y="${this.padding}">
         ${this.tspans.join('\n')}
       </text>
     </svg>`
@@ -72,7 +74,7 @@ class SVG {
   }
 
   textWidth(text, size, font) {
-    return pixelWidth(text, { size, font })
+    return getWidth(text, font, size)
   }
 }
 

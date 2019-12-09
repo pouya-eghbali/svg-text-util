@@ -19,7 +19,7 @@ const sharp = require("sharp")
 
 sharp(buffer)
   .png()
-  .toFile(`${__dirname}/text.png`)
+  .toFile(`${__dirname}/test.png`)
 ```
 
 ## Public methods
