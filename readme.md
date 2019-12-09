@@ -15,6 +15,8 @@ const buffer = svg(1000, 400) // width, height
   .text('long and centered '.repeat(10), { size: 32, color: 'pink', align: 'center' })
   .buffer()
 
+const sharp = require("sharp")
+
 sharp(buffer)
   .png()
   .toFile(`${__dirname}/text.png`)
