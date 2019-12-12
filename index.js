@@ -32,12 +32,18 @@ class SVG {
     const words = text.split(' ').filter(Boolean)
     const lines = []
     let line = []
+    let failed = 0
     while (true) {
       line.push(words.shift())
       if (this.textWidth(line.join(' '), size, font) > this.width) {
         words.unshift(line.pop())
         lines.push(line.join(' '))
         line = []
+        failed++
+      }
+      if (failed == 2) {
+        line.push(words.shift())
+        failed = 0
       }
       if (!words.length) {
         lines.push(line.join(' '))
