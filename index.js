@@ -7,6 +7,7 @@ class SVG {
     this.height = height
     this.padding = padding || 0
     this.tspans = []
+    this.autoHeight = height == 0
   }
   white(size) {
     size = size || 50
@@ -20,6 +21,9 @@ class SVG {
     const x = this[align || 'left'](text, size, font)
     text = xmlescape(text)
     const tspan = `<tspan dy="${size}" x="${x + this.padding}" font-size="${size}px" fill="${color}" font-family="${font}">${text}</tspan>`
+    if (this.autoHeight) {
+      this.height += size
+    }
     this.tspans.push(tspan)
     return this
   }

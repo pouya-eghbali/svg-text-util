@@ -1,6 +1,6 @@
 const { svg } = require("./index")
 
-const buffer = svg(1000, 400, 20)
+const buffer = svg(1000, 0, 20)
   .text('TEXT', { font: 'Hack', size: 72, color: 'rgb(100, 50, 200)', align: 'left' })
   .text('TEXT', { font: 'Hack', size: 72, color: 'green', align: 'center' })
   .text('TEXT', { font: 'Hack', size: 72, color: '#CC44AA', align: 'right' })
