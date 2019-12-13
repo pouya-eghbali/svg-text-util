@@ -22,6 +22,8 @@ sharp(buffer)
   .toFile(`${__dirname}/test.png`)
 ```
 
+Set height to `0` to automatically calculate the height.
+
 ## Public methods
 
 text: Add text
